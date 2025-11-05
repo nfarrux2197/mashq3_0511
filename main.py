@@ -1,31 +1,22 @@
-class Student:
-    def __init__(self, score):
-        self.score = score
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
     @property
-    def grade(self):
-        if self.score >= 90:
-            return "A"
-        elif self.score >= 80:
-            return "B"
-        elif self.score >= 70:
-            return "C"
-        elif self.score >= 60:
-            return "D"
-        else:
-            return "F"
+    def area(self):
+        return self.width * self.height
 
-    @grade.setter
-    def grade(self, letter):
-        grades = {"A": 95, "B": 85, "C": 75, "D": 65, "F": 50}
-        if letter in grades:
-            self.score = grades[letter]
-        else:
-            raise ValueError("Noto‘g‘ri baho harfi kiritildi!")
+    @area.setter
+    def area(self, new_area):
+        if self.height == 0:
+            raise ValueError("Balandlik 0 bo'lishi mumkin emas!")
+        self.width = new_area / self.height
 
 
-s = Student(82)
-print(f"Talaba bali: {s.score}, bahosi: {s.grade}")
-s.grade = "A"
-print(f"Yangi baho: {s.grade}, yangi ball: {s.score}")
+r = Rectangle(5, 10)
+print(f"Birinchi maydon: {r.area}")
+r.area = 100
+print(f"Yangi kenglik: {r.width}")
+print(f"Yangi maydon: {r.area}")
 print("-" * 40)
